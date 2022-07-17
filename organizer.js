@@ -57,3 +57,5 @@ class Media {
   
   const historyOfEverything = new Book('A Short History of Nearly Everything', 'Bill Bryson', 544);
   console.log(historyOfEverything)
+
+  // going for coffee run :)
