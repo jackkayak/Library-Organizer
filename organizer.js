@@ -1,3 +1,5 @@
+//inheritance work in javascript, organizing content
+// parent class
 class Media {
     constructor(title) {
       this._title = title;
@@ -26,28 +28,27 @@ class Media {
     }
   
     getAverageRating() {
-      let ratingsSum = 
-    this.ratings.reduce((accumulator, rating) =>
-    accumulator + rating);
-        return ratingsSum/ this.ratings.length;
+      let ratingsSum = this.ratings.reduce(
+        (accumulator, rating) => accumulator + rating
+      );
+      return ratingsSum / this.ratings.length;
     }
   
-  addRating(value) {
-    this.ratings.push(value);
+    addRating(value) {
+      this.ratings.push(value);
+    }
   }
-  };
   
-  
+  // book class that inherits media class
   class Book extends Media {
     constructor(title, author, pages) {
-      super(title)
+      super(title);
       this._author = author;
       this._pages = pages;
     }
   
     get author() {
       return this._author;
-  
     }
   
     get pages() {
@@ -55,7 +56,45 @@ class Media {
     }
   }
   
-  const historyOfEverything = new Book('A Short History of Nearly Everything', 'Bill Bryson', 544);
-  console.log(historyOfEverything)
-
-  // going for coffee run :)
+  //movie class that inherits media class
+  class Movie extends Media {
+    constructor(title, director, runTime) {
+      super(title);
+      this._director = director;
+      this._runTime = runTime;
+    }
+  
+    get director() {
+      return this._director;
+    }
+  
+    get runTime() {
+      return this._runTime;
+    }
+  }
+  
+  //creating Instances
+  
+  const historyOfEverything = new Book(
+    "A Short History of Nearly Everything",
+    "Bill Bryson",
+    544
+  );
+  historyOfEverything.toggleCheckOutStatus();
+  console.log(historyOfEverything.isCheckedOut);
+  historyOfEverything.addRating(4);
+  historyOfEverything.addRating(5);
+  historyOfEverything.addRating(5);
+  console.log(historyOfEverything.getAverageRating());
+  console.log(historyOfEverything);
+  historyOfEverything.getAverageRating();
+  
+  const speed = new Movie("Speed", "Jan de Bont", 116);
+  speed.toggleCheckOutStatus();
+  console.log(speed.isCheckedOut);
+  speed.addRating(1);
+  speed.addRating(1);
+  speed.addRating(5);
+  speed.getAverageRating();
+  console.log(speed.getAverageRating());
+  console.log(speed);
